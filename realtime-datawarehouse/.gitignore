@@ -1,0 +1,5 @@
+logs/
+pinot-docker-demo/
+__pycache__
+temp.txt
+.idea/

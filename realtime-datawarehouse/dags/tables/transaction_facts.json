@@ -1,0 +1,36 @@
+{
+  "tableName": "transaction_facts",
+  "tableType": "REALTIME",
+  "segmentsConfig": {
+    "timeColumnName": "transaction_date",
+    "timeType": "MILLISECONDS",
+    "replication": "1",
+    "schemaName": "transaction_facts"
+  },
+  "tenants": {
+    "broker": "DefaultTenant",
+    "server": "DefaultTenant"
+  },
+  "tableIndexConfig": {
+    "loadMode": "MMAP",
+    "invertedIndexColumns": ["transaction_type", "currency", "branch_id"],
+    "sortedColumn": ["transaction_date"],
+    "streamConfigs": {
+      "streamType": "kafka",
+      "stream.kafka.topic.name": "transaction_facts",
+      "stream.kafka.broker.list": "kafka:9092",
+      "stream.kafka.consumer.type": "LOWLEVEL",
+      "stream.kafka.consumer.factory.class.name": "org.apache.pinot.plugin.stream.kafka30.KafkaConsumerFactory",
+      "stream.kafka.decoder.class.name": "org.apache.pinot.plugin.inputformat.json.JSONMessageDecoder",
+      "stream.kafka.decoder.prop.format": "JSON",
+      "stream.kafka.consumer.prop.auto.offset.reset": "smallest",
+      "realtime.segment.flush.threshold.rows": "0",
+      "realtime.segment.flush.threshold.segment.rows": "5000",
+      "realtime.segment.flush.threshold.time": "3600000"
+    }
+  },
+  "metadata": {
+    "customConfigs": {}
+  },
+  "isDimTable": false
+}
