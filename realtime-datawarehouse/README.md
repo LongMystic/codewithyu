@@ -13,3 +13,6 @@ Generate data with python random library
   - Zookeeper: coordinates Pinot’s internal cluster state
 - Apache Airflow: orchestration + scheduler
 - Apache Superset: dashboard/ad-hoc analytic platform
+
+## Overview of architecture: <br>
+![Alt text](codewithyu.drawio.png)
